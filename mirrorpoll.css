@@ -1,7 +1,12 @@
-#sample-area{
-	position: absolute;
-	top:  10px;
-	right:  10px;
+#readout{
+    position: absolute;
+    top :0;
+    right: 0;
+    background: rgba(100, 255, 255, .5);
+    padding: 5px;
+    font-size: .8rem;
+    z-index: 9;
+    pointer-events: none;
 }
 .control{
 	cursor: pointer;
@@ -14,10 +19,6 @@
 
 .control.selected{
 	background: lightpink;
-}
-
-#sample-content{
-	margin-top: 40px;
 }
 
 .remove{
@@ -36,4 +37,14 @@
 .control.trash{
 	opacity: .2;
 	pointer-events: none;
+	float:  right;
 }
+
+#builder{
+	position: absolute;
+	padding: 20px;
+	background: firebrick;
+	bottom: 10px;
+	cursor: pointer;
+}
+

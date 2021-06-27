@@ -1,10 +1,10 @@
-<div id='header'>
+<!-- <div id='header'>
 	<a href='./admin'>admin</a>
-</div>
+</div> -->
 
-<div id='sample-area'>
+<!-- <div id='sample-area'> -->
 
-    <div id='sample-controls'>
+    <!-- <div id='sample-controls'>
         sample controls:<br>
         <div class='control'>
         	<div class='remove'>x</div>
@@ -18,12 +18,16 @@
         	<div class='remove'>x</div>
         	3
         </div>
-    </div>
+    </div> -->
 
-    <div id='sample-content'>
+<!--     <div id='sample-content'>
         sample content:
-    </div>
+    </div> -->
 
+<!-- </div> -->
+
+<div id='readout'>
+    sample content:
 </div>
 
 <script src='./js/custom.js' defer='defer'></script>

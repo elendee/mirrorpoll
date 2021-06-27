@@ -4,6 +4,7 @@ function mirrorpoll_get(callback = () => {}) {
         .then( r => {
             if( r.success ){
                 const state = JSON.parse( r.state );
+                // console.log( state )
                 callback(state);
             }else{
                 console.error( r );
