@@ -2,10 +2,10 @@ const POLL_TIME = 3000;
 
 // -------------------
 // How/when the state get and set happen...
-setInterval(() => {
-    mirrorpoll_get(state => {
-        deserialize_state(state);
-    });
+setInterval(async () => {
+    const state = await mirrorpoll_get();
+    console.log('state === ',state);
+    deserialize_state(state);
 }, POLL_TIME);
 
 for(const controlElement of document.querySelectorAll('.control')) {
