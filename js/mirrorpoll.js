@@ -1,21 +1,16 @@
-function mirrorpoll_get(callback = () => {}) {
-    fetch( './state_get.php', {method: 'get'})
-        .then( res => res.json())
-        .then( r => {
-            if( r.success ){
-                const state = JSON.parse( r.state );
-                callback(state);
-            }else{
-                console.error( r );
-            }
-        })
-        .catch( err => {
-            console.log( err );
-        })
-        ;
+async function mirrorpoll_get() {
+    const res = await fetch( './state_get.php', {method: 'get'})
+    if(res.ok){
+        const r = await res.json();
+        if( r.success ){
+            return JSON.parse( r.state );
+        }
+    } else {
+        console.error(res);
+    }
 }
-function mirrorpoll_set(state, callback = () => {}) {
-    fetch( './state_set.php', {
+async function mirrorpoll_set(state, callback = () => {}) {
+    const res = await fetch( './state_set.php', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -23,16 +18,15 @@ function mirrorpoll_set(state, callback = () => {}) {
         body: JSON.stringify({
             state: JSON.stringify( state ),
         })
-    })
-    .then( res => res.json())
-    .then( r => {
-        if( r.success ) {
-            callback(r);
-        }else{
-            console.error( r )
+    });
+    if(res.ok){
+        const r = await res.json();
+        if( r.success ){
+            return r;
         }
-    }).catch( err => { console.log( err ) })
-    .catch( err => { console.log( err )})
+    } else {
+        console.error(res);
+    }
 }
 
 function random_hex( len ) {
