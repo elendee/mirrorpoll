@@ -2,12 +2,16 @@
 
 function LOGGER( $msg ){
 
-	$logfile = 'txt/.log.txt';
+	$logPath = './txt/log.txt';
 
-	file_put_contents( $logfile, $msg . PHP_EOL, FILE_APPEND | LOCK_EX );
+    if (!file_exists($logPath)) {
+        file_put_contents($logPath, "");
+    }
 
-	if( filesize( $logfile ) > 10000 ){
-		file_put_contents( $logfile, 'truncating' . PHP_EOL );
+	file_put_contents( $logPath, $msg . PHP_EOL, FILE_APPEND | LOCK_EX );
+
+	if( filesize( $logPath ) > 10000 ){
+		file_put_contents( $logPath, 'truncating' . PHP_EOL );
 	}
 
 }

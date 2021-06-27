@@ -2,8 +2,16 @@
 
 include './logger.php';
 
-$timestamp = './txt/.timestamp.txt';
-$file = './txt/.state.txt';
+$timestampPath = './txt/timestamp.txt';
+$statePath = './txt/state.txt';
+
+
+if (!file_exists($statePath)) {
+    file_put_contents($statePath, "");
+}
+if (!file_exists($timestampPath)) {
+    file_put_contents($timestampPath, "");
+}
 
 class response {}
 
@@ -15,10 +23,10 @@ $state = $body['state'];
 
 // LOGGER( json_encode( $state) );
 
-file_put_contents( $timestamp, time() );
+file_put_contents( $timestampPath, time() );
 // file_put_contents( $mod,  )
 // write state
-file_put_contents( $file, $state );
+file_put_contents( $statePath, $state );
 
 $r = (object)['state' => $state ];
 $r->success = true;
