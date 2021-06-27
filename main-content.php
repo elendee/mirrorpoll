@@ -25,3 +25,5 @@
     </div>
 
 </div>
+
+<script src='./js/custom.js' defer='defer'></script>

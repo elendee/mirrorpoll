@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>MirrorPoll</title>
-	<link rel="stylesheet" type="text/css" href="./mirrorpoll.css">
+	<script type="text/javascript" src='js/mirrorpoll.js' defer='defer'></script>
+	<link rel="stylesheet" type="text/css" href="mirrorpoll.css">
 </head>
 <body>
 
@@ -15,8 +16,6 @@
 		}
 
 	?>
-
-	<script type='module' src='./js/init.js' defer='defer'></script>
 
 </body>
 
