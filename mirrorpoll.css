@@ -1,8 +1,8 @@
 #readout{
     position: absolute;
-    top :0;
+    bottom :0;
     right: 0;
-    background: rgba(100, 255, 255, .5);
+    background: rgba(100, 255, 255, .2);
     padding: 5px;
     font-size: .8rem;
     z-index: 9;
@@ -35,7 +35,7 @@
 }
 
 .control.trash{
-	opacity: .2;
+	opacity: .5;
 	pointer-events: none;
 	float:  right;
 }

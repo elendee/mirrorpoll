@@ -2,10 +2,10 @@ const POLL_TIME = 3000;
 
 // -------------------
 // How/when the state get and set happen...
-setInterval(() => {
-    mirrorpoll_get(state => {
-        deserialize_state(state);
-    });
+setInterval(async () => {
+    const state = await mirrorpoll_get();
+    console.log('state === ',state);
+    deserialize_state(state);
 }, POLL_TIME);
 
 // -------------------
@@ -85,20 +85,21 @@ const build_control = data => {
 	if( data.garbage && data.garbage > 0 ) control.classList.add('trash')
 	control.setAttribute('data-uuid', data.uuid || random_hex(6) )
 	control.setAttribute('data-modified', data.modified || Date.now() )
-    control.addEventListener('click', () => {
-        control.classList.toggle('selected');
+    control.addEventListener('click', e => {
+    	if( e.target.classList.contains('remove')){
+	    	const garbage = Number( control.getAttribute('data-garbage-collected') || 1 )
+	    	control.setAttribute('data-garbage-collected', garbage )
+	    	control.classList.add('trash')
+    	}else{
+	        control.classList.toggle('selected');
+    	}
         control.setAttribute('data-modified', Date.now() )
-        mirrorpoll_set(serialize_state());
+        mirrorpoll_set();
     })
 
     const remove = document.createElement('div')
     remove.classList.add('remove')
     remove.innerHTML = 'x'
-    remove.addEventListener('click', () => {
-    	const garbage = Number( control.getAttribute('data-garbage-collected') || 1 )
-    	control.setAttribute('data-garbage-collected', garbage )
-    	control.classList.add('trash')
-    })
     control.appendChild( remove )
 
     return control
@@ -113,5 +114,6 @@ builder.id = 'builder'
 builder.innerText = 'add button'
 builder.addEventListener('click', () => {
 	document.body.appendChild( build_control() )
+	mirrorpoll_set()
 })
 document.body.appendChild( builder )
