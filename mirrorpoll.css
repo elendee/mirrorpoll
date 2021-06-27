@@ -6,14 +6,34 @@
 .control{
 	cursor: pointer;
 	display: inline-block;
-	padding: 10px;
+	padding: 20px;
 	border: 1px solid;
+	position: relative;
+	user-select: none;
 }
 
 .control.selected{
-	background: lightgrey;
+	background: lightpink;
 }
 
 #sample-content{
 	margin-top: 40px;
+}
+
+.remove{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	top: -5px;
+	right: -5px;
+	background: red;
+	align-items: center;
+	justify-content:center;
+	cursor: pointer;
+}
+
+.control.trash{
+	opacity: .2;
+	pointer-events: none;
 }
